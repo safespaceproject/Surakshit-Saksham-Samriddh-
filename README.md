@@ -80,13 +80,50 @@ input,select,textarea{width:100%;padding:11px;margin-top:5px;border:1px solid #b
 <p>Safer public spaces begin with community action.</p>
 </footer>
 
+
+
 <script>
-document.getElementById("reportForm").addEventListener("submit",function(event){
-event.preventDefault();
-document.getElementById("message").textContent="Demo report submitted successfully! Thank you for supporting safer public spaces.";
-this.reset();
-});
+const reportForm = document.getElementById("reportForm");
+const message = document.getElementById("message");
+
+if (reportForm && message) {
+  let reports = [];
+
+  const history = document.createElement("div");
+  history.innerHTML = "<h3>Report History (This Session)</h3><ul id='reportList'></ul>";
+  reportForm.parentElement.appendChild(history);
+
+  reportForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const category = document.getElementById("category").value;
+    const area = document.getElementById("area").value.trim();
+    const details = document.getElementById("details").value.trim();
+
+    if (!category || !area || !details) {
+      message.textContent = "Please complete all fields.";
+      return;
+    }
+
+    reports.push({
+      category: category,
+      area: area,
+      details: details
+    });
+
+    const list = document.getElementById("reportList");
+    const item = document.createElement("li");
+    item.textContent = category + " — " + area + ": " + details;
+    list.appendChild(item);
+
+    message.textContent =
+      "Demo report submitted successfully! Your report appears in this page session only.";
+
+    reportForm.reset();
+  });
+}
 </script>
+
 
 </body>
 </html>
