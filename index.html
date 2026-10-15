@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFESCAPE 360</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f1f6fa;color:#183454}
+header{background:#10245e;color:white;padding:24px 16px;text-align:center}
+header h1{margin:0;font-size:28px}
+header p{margin-bottom:0}
+main{max-width:650px;margin:20px auto;padding:16px}
+.card{background:white;padding:20px;margin-bottom:18px;border-radius:14px;box-shadow:0 3px 12px #0001}
+h2{color:#087f80;font-size:20px}
+label{display:block;margin-top:13px;font-weight:bold}
+input,select,textarea{box-sizing:border-box;width:100%;padding:12px;margin-top:6px;border:1px solid #bbc8d5;border-radius:7px;font-size:15px}
+button{background:#087f80;color:white;border:0;padding:13px 18px;border-radius:8px;margin-top:15px;font-size:15px;font-weight:bold;width:100%}
+.note{font-size:13px;color:#526578;line-height:1.5}
+.report{background:#eef8f6;padding:12px;border-radius:8px;margin-top:10px}
+footer{text-align:center;padding:20px;font-size:12px;color:#526578}
+</style>
+</head>
+<body>
+<header>
+<h1>SAFESCAPE 360°</h1>
+<p>Safer Streets, Shared Spaces</p>
+</header>
+<main>
+<section class="card">
+<h2>Report a Public-Space Safety Issue</h2>
+<p>Help identify lighting, access and other public-space safety concerns.</p>
+<form id="reportForm">
+<label for="category">Issue category</label>
+<select id="category" required>
+<option value="">Choose an issue</option>
+<option>Poor street lighting</option>
+<option>Isolated or unsafe route</option>
+<option>Broken footpath</option>
+<option>Need for public support signage</option>
+<option>Other public-space concern</option>
+</select>
+<label for="location">General area (do not enter a home address)</label>
+<input id="location" maxlength="100" placeholder="e.g. Main market, Sector 5" required>
+<label for="details">Additional details (optional)</label>
+<textarea id="details" maxlength="300" rows="3" placeholder="Describe the public-space issue. Do not include names or private details."></textarea>
+<button type="submit">Submit Demo Report</button>
+</form>
+<p class="note">Prototype only: this demo does not contact police or emergency services. Do not enter personal or sensitive information.</p>
+</section>
+<section class="card">
+<h2>Demo Reports</h2>
+<p class="note">Reports submitted here appear only in this page session. They are not sent to authorities or stored in a database.</p>
+<div id="reports"><p>No demo reports yet.</p></div>
+</section>
+<section class="card">
+<h2>Our Goals</h2>
+<p>• Improve visibility of public-space concerns.</p>
+<p>• Support community participation and civic action.</p>
+<p>• Promote women's safety, accessibility and privacy.</p>
+<p class="note">In an emergency in India, call 112. This project is not an official emergency service.</p>
+</section>
+</main>
+<footer>SAFESCAPE 360° | A proposed community safety initiative</footer>
+<script>
+document.getElementById("reportForm").addEventListener("submit",function(e){
+e.preventDefault();
+const category=document.getElementById("category").value;
+const location=document.getElementById("location").value.trim();
+const details=document.getElementById("details").value.trim();
+const box=document.getElementById("reports");
+if(box.querySelector("p")?.textContent==="No demo reports yet.")box.innerHTML="";
+const item=document.createElement("div");
+item.className="report";
+const heading=document.createElement("strong");
+heading.textContent=category;
+const place=document.createElement("p");
+place.textContent="General area: "+location;
+item.appendChild(heading);
+item.appendChild(place);
+if(details){
+const description=document.createElement("p");
+description.textContent=details;
+item.appendChild(description);
+}
+box.prepend(item);
+this.reset();
+});
+</script>
+</body>
+</html>
