@@ -1,0 +1,16 @@
+[
+  {
+    "id": "DEMO-001",
+    "category": "Public Lighting",
+    "generalArea": "Sample Market Area",
+    "details": "Improved street lighting is needed.",
+    "status": "Demo Only"
+  },
+  {
+    "id": "DEMO-002",
+    "category": "Safety Signage",
+    "generalArea": "Sample Bus Stop",
+    "details": "Clear safety signs and emergency helpline information are needed.",
+    "status": "Demo Only"
+  }
+]
