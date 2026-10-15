@@ -1,0 +1,23 @@
+[
+{
+"id": "SAFE-DEMO-001",
+"category": "Street Lighting",
+"general_area": "Example Market",
+"details": "Improved lighting and visible safety signage are suggested.",
+"status": "Fictional Demo"
+},
+{
+"id": "SAFE-DEMO-002",
+"category": "Safety Awareness",
+"general_area": "Example Bus Stop",
+"details": "Display verified emergency helpline information.",
+"status": "Fictional Demo"
+},
+{
+"id": "SAFE-DEMO-003",
+"category": "Public Space Accessibility",
+"general_area": "Example Community Park",
+"details": "Review lighting, visibility and access to help points.",
+"status": "Fictional Demo"
+}
+]
